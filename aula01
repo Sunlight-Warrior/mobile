@@ -1,0 +1,29 @@
+nota=6;
+
+if(nota>=6){
+    console.log("Passou");
+}
+else if (nota>=4){
+    console.log("Precisa de AVS");
+}
+else{
+    console.log("Reprovou");
+}
+
+for(let i=0;i<100;i=i+3){
+    console.log(i);
+}
+
+Alunos = ["Ana", "Bob", "Caio"]
+
+for (aluno in Alunos){
+    console.log(Alunos[aluno]);
+}
+
+contagem = 0
+while (contagem<5){
+    console.log("oi");
+    contagem=contagem+1;
+}
+
+Alunos
