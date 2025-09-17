@@ -1,0 +1,75 @@
+import React from 'react';
+import {View, FlatList, StyleSheet, Text, StatusBar, Image} from 'react-native';
+import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
+
+
+const DATA = [
+  {
+    title: 'Hamburguer',
+    img:require("./assets/a.png"), 
+    descr:"Hamburguer faz bem pra vc", valor:"R$ 3,00"
+  },
+  {
+    title: 'Pizza',
+    img:require("./assets/a.png"), 
+    descr:"Pizza faz mal pra vc", valor:"R$ 2,00"
+  },
+  {
+    title: 'Bolo',
+    img:require("./assets/snack-icon.png"), 
+    descr:"Bolo é indiferente", valor:"R$ 1,00"
+  },
+];
+
+//https://reactnative.dev/docs/flatlist?language=javascript
+//Modificar para mostrar uma lista de produtos de ifood, 
+//com foto, descrição, valor e titulo
+const Item = ({title, valor, descr, x}) => (
+  <View style={styles.item}>
+    <Image source={x} style={styles.tinyLogo}/>
+    <Text style={styles.title}>{title}</Text>
+    <Text style={styles.descr}>{descr}</Text>
+    <Text style={styles.valor}>{valor}</Text>
+  </View>
+);
+
+
+
+const App = () => (
+  <SafeAreaProvider>
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={DATA}
+        renderItem={({item}) => <Item x={item.img} descr={item.descr} title={item.title} valor={item.valor}/>}
+      />
+    </SafeAreaView>
+  </SafeAreaProvider>
+);
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight || 0,
+  },
+  item: {
+    backgroundColor: '#f9c2ff',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  title: {
+    fontSize: 32,
+  },
+  descr: {
+    fontSize: 12,
+  },
+  valor: {
+    fontSize: 20,
+  },
+  tinyLogo: {
+    width: 50,
+    height: 50,
+  }
+});
+
+export default App;
